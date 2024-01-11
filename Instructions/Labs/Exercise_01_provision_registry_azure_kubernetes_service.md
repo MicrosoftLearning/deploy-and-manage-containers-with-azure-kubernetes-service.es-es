@@ -11,8 +11,8 @@ Exercise:
 Este proyecto guiado consta de los ejercicios siguientes:
 
 + **Ejercicio 1: aprovisionar Azure Container Registry (ACR) y Azure Kubernetes Service (AKS).**
-+ Ejercicio 2: compilar imágenes de contenedor de Linux y Windows, y almacenarlas en Azure Container Registry.
-+ Ejercicio 3: implementar imágenes de contenedor en Azure Kubernetes Service.
++ Ejercicio 2: Compilar imágenes de contenedor de Linux y Windows, y almacenarlas en Azure Container Registry.
++ Ejercicio 3: Implementar imágenes de contenedor en Azure Kubernetes Service.
 + Ejercicio 4: revisar la implementación y desaprovisionar todos los recursos.
 
 En este ejercicio, aprovisiona recursos de Azure Container Registry y Azure Kubernetes Service.
@@ -31,13 +31,13 @@ En esta tarea, creará una instancia de Azure Container Registry
 1. En Azure Portal, en el cuadro de texto **Buscar**, busque y seleccione **Registros de contenedor**.
 1. En la página **Registros de contenedor**, seleccione **+ Crear** y especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subscription|Nombre de la suscripción de Azure que usará en este laboratorio|
     |Grupo de recursos|Nombre de un nuevo grupo de recursos **acr-01-RG**|
     |Nombre de registro|Cualquier nombre válido y único a nivel global que conste de entre 5 y 50 caracteres alfanuméricos|
     |Region|Cualquier región de Azure en la que pueda crear una instancia de Azure Container Registry y un clúster de AKS|
-    |Zonas de disponibilidad|**None**|
+    |Zonas de disponibilidad|**Ninguno**|
     |SKU|**Basic**|
 
 1. En la página **Registros de contenedor**, seleccione **Revisar y crear** y, en la pestaña **Revisar y crear**, seleccione **Crear**.
@@ -52,7 +52,7 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. En Azure Portal, en el cuadro de texto **Buscar**, busque y seleccione **Redes virtuales**.
 1. En la página **Redes virtuales**, seleccione **+ Crear** y, a continuación, en la pestaña **Aspectos básicos** de la página **Crear red virtual**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subscription|Nombre de la suscripción de Azure seleccionada en el primer ejercicio de este laboratorio|
     |Grupo de recursos|Nombre de un nuevo grupo de recursos **aks-01-RG**|
@@ -68,17 +68,17 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. En Azure Portal, en el cuadro de texto **Buscar**, busque y seleccione **Servicios de Kubernetes**.
 1. En la página **Servicios de Kubernetes**, seleccione **+ Crear**, en la lista desplegable, seleccione **Crear un clúster de Kubernetes** y, a continuación, en la pestaña **Aspectos básicos** de la página **Crear clúster de Kubernetes**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subscription|Nombre de la suscripción de Azure seleccionada en el primer ejercicio de este laboratorio|
     |Grupo de recursos|**aks-01-RG**|
     |Configuración preestablecida de clúster|**Desarrollo/pruebas**|
     |Nombre del clúster de Kubernetes|**aks-01**|
     |Region|La misma región de Azure que seleccionó en el primer ejercicio de este laboratorio|
-    |Zonas de disponibilidad|**None**|
+    |Zonas de disponibilidad|**Ninguno**|
     |Plan de tarifa de AKS|**Gratis**|
     |Versión de Kubernetes|Acepte el valor predeterminado|
-    |Actualización automática|Disabled|
+    |Actualización automática|Deshabilitado|
     |Tamaño del nodo|**B4ms estándar**|
     |Método de escala|**Manual**|
     |Recuento de nodos|**2**|
@@ -100,15 +100,15 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. De nuevo en la página **vnet-01 \| Subredes**, en la ruta de navegación de la parte superior izquierda de la página, seleccione **Crear clúster de Kubernetes**. 
 1. De nuevo en la pestaña **Redes** de la página **Crear clúster de Kubernetes**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subred de clústeres|**aks-subnet (10.0.0.0/20)**|
     |Intervalo de direcciones del servicio de Kubernetes|**172.16.0.0/22**|
     |Dirección IP del servicio DNS de Kubernetes|**172.16.3.254**|
     |Prefijo del nombre DNS|**aks-01-dns**|
-    |Habilitar clúster privado|Disabled|
-    |Establecer intervalos IP autorizados|Disabled|
-    |Directiva de red|**None**|
+    |Habilitar clúster privado|Deshabilitado|
+    |Establecer intervalos IP autorizados|Deshabilitado|
+    |Directiva de red|**Ninguno**|
 
 1. En la pestaña **Redes** de la página **Crear clúster de Kubernetes**, seleccione la pestaña **Grupos de nodos**.
 
@@ -117,18 +117,18 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. En la pestaña **Grupos de nodos** de la página **Crear clúster de Kubernetes**, seleccione **+Agregar grupo de nodos**.
 1. En la página **Agregar grupo de nodos**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Nombre del grupo de nodos|**w1pool**|
-    |Modo|**Usuario**|
+    |Modo|**User**|
     |Tipo de SO|**Windows**|
-    |Zona de disponibilidad|**None**|
-    |Habilitar instancias de Azure Spot|Disabled|
+    |Zona de disponibilidad|**Ninguno**|
+    |Habilitar instancias de Azure Spot|Deshabilitado|
     |Tamaño del nodo|**Standard B4s_v2**|
     |Método de escala|**Manual**|
     |Recuento de nodos|**2**|
     |Máximo de pods por nodo|**30**|
-    |Habilitar IP pública por nodo|Disabled|
+    |Habilitar IP pública por nodo|Deshabilitado|
 
    > **Nota:** es posible que tenga que aumentar las cuotas de vCPU o cambiar la SKU de la máquina virtual para dar cabida a los valores de tamaño de nodo y número de nodos. Para obtener información sobre el procedimiento para aumentar las cuotas de vCPU, consulte el artículo de Microsoft Learn [Aumentar las cuotas de vCPU de una familia de máquinas virtuales](https://learn.microsoft.com/en-us/azure/quotas/per-vm-quota-requests).
 

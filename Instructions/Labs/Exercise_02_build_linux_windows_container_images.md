@@ -9,9 +9,9 @@ Exercise:
 
 Este proyecto guiado consta de los ejercicios siguientes:
 
-+ Ejercicio 1: aprovisionar Azure Container Registry (ACR) y Azure Kubernetes Service (AKS).
++ Ejercicio 1: Aprovisionar Azure Container Registry (ACR) y Azure Kubernetes Service (AKS).
 + **Ejercicio 2: compilar imágenes de contenedor de Linux y Windows, y almacenarlas en Azure Container Registry.**
-+ Ejercicio 3: implementar imágenes de contenedor en Azure Kubernetes Service.
++ Ejercicio 3: Implementar imágenes de contenedor en Azure Kubernetes Service.
 + Ejercicio 4: revisar la implementación y desaprovisionar todos los recursos.
 
 En este ejercicio compila imágenes de contenedor de Linux y Windows, y almacenarlas en Azure Container Registry.
