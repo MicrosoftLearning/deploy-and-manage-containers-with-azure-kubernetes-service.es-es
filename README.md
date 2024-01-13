@@ -1,4 +1,4 @@
-# Implementación y administración de contenedores con Azure Kubernetes Service
+# Implementación y administración de contenedores con Azure Kubernetes Service
 
 Este repositorio contiene las instrucciones y los recursos necesarios para realizar los ejercicios de la ruta de aprendizaje Implementación y administración de contenedores con Azure Kubernetes Service en Microsoft Learn.
 ## Información sobre los problemas

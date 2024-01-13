@@ -9,8 +9,8 @@ Guided Exercise:
 Este ejercicio guiado consta de las siguientes actividades:
 
 + Ejercicio 1: aprovisionar Azure Container Registry (ACR) y Azure Kubernetes Service (AKS)
-+ Ejercicio 2: compilar imágenes de contenedor de Linux y Windows, y almacenarlas en ACR
-+ Ejercicio 3: implementar imágenes de contenedor en AKS 
++ Ejercicio 2: Compilar imágenes de contenedor de Linux y Windows y almacenarlas en ACR
++ Ejercicio 3: Implementar imágenes de contenedor en AKS 
 + Ejercicio 4: revisar la implementación y desaprovisionar todos los recursos
 
 ## Ejercicio 1: aprovisionar Azure Container Registry (ACR) y Azure Kubernetes Service (AKS)
@@ -30,13 +30,13 @@ En esta tarea, creará una instancia de Azure Container Registry
 1. En Azure Portal, en el cuadro de texto **Buscar**, busque y seleccione **Registros de contenedor**.
 1. En la página **Registros de contenedor**, seleccione **+ Crear** y especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subscription|Nombre de la suscripción de Azure que usará en este ejercicio|
     |Grupo de recursos|Nombre de un nuevo grupo de recursos **acr-01-RG**|
     |Nombre de registro|Cualquier nombre válido y único a nivel global que conste de entre 5 y 50 caracteres alfanuméricos|
     |Region|Cualquier región de Azure en la que pueda crear una instancia de Azure Container Registry y un clúster de AKS|
-    |Zonas de disponibilidad|**None**|
+    |Zonas de disponibilidad|**Ninguno**|
     |SKU|**Basic**|
 
 1. En la página **Registros de contenedor**, seleccione **Revisar y crear** y, en la pestaña **Revisar y crear**, seleccione **Crear**.
@@ -51,7 +51,7 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. En Azure Portal, en el cuadro de texto **Buscar**, busque y seleccione **Redes virtuales**.
 1. En la página **Redes virtuales**, seleccione **+ Crear** y, a continuación, en la pestaña **Aspectos básicos** de la página **Crear red virtual**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subscription|Nombre de la suscripción de Azure seleccionada en el primer ejercicio|
     |Grupo de recursos|Nombre de un nuevo grupo de recursos **aks-01-RG**|
@@ -67,17 +67,17 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. En Azure Portal, en el cuadro de texto **Buscar**, busque y seleccione **Servicios de Kubernetes**.
 1. En la página **Servicios de Kubernetes**, seleccione **+ Crear**, en la lista desplegable, seleccione **Crear un clúster de Kubernetes** y, a continuación, en la pestaña **Aspectos básicos** de la página **Crear clúster de Kubernetes**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subscription|Nombre de la suscripción de Azure seleccionada en el primer ejercicio|
     |Grupo de recursos|**aks-01-RG**|
     |Configuración preestablecida de clúster|**Desarrollo/pruebas**|
     |Nombre del clúster de Kubernetes|**aks-01**|
     |Region|La misma región de Azure que seleccionó en el primer ejercicio|
-    |Zonas de disponibilidad|**None**|
+    |Zonas de disponibilidad|**Ninguno**|
     |Plan de tarifa de AKS|**Gratis**|
     |Versión de Kubernetes|Acepte el valor predeterminado|
-    |Actualización automática|Disabled|
+    |Actualización automática|Deshabilitado|
     |Tamaño del nodo|**B4ms estándar**|
     |Método de escala|**Manual**|
     |Recuento de nodos|**2**|
@@ -99,15 +99,15 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. De nuevo en la página **vnet-01 \| Subredes**, en la ruta de navegación de la parte superior izquierda de la página, seleccione **Crear clúster de Kubernetes**. 
 1. De nuevo en la pestaña **Redes** de la página **Crear clúster de Kubernetes**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Subred de clústeres|**aks-subnet (10.0.0.0/20)**|
     |Intervalo de direcciones del servicio de Kubernetes|**172.16.0.0/22**|
     |Dirección IP del servicio DNS de Kubernetes|**172.16.3.254**|
     |Prefijo del nombre DNS|**aks-01-dns**|
-    |Habilitar clúster privado|Disabled|
-    |Establecer intervalos IP autorizados|Disabled|
-    |Directiva de red|**None**|
+    |Habilitar clúster privado|Deshabilitado|
+    |Establecer intervalos IP autorizados|Deshabilitado|
+    |Directiva de red|**Ninguno**|
 
 1. En la pestaña **Redes** de la página **Crear clúster de Kubernetes**, seleccione la pestaña **Grupos de nodos**.
 
@@ -116,18 +116,18 @@ En esta tarea, creará una red virtual de Azure e implementará un clúster de A
 1. En la pestaña **Grupos de nodos** de la página **Crear clúster de Kubernetes**, seleccione **+Agregar grupo de nodos**.
 1. En la página **Agregar grupo de nodos**, especifique la siguiente configuración:
 
-    |Configuración|Value|
+    |Configuración|Valor|
     |---|---|
     |Nombre del grupo de nodos|**w1pool**|
-    |Modo|**Usuario**|
+    |Modo|**User**|
     |Tipo de SO|**Windows**|
-    |Zona de disponibilidad|**None**|
-    |Habilitar instancias de Azure Spot|Disabled|
+    |Zona de disponibilidad|**Ninguno**|
+    |Habilitar instancias de Azure Spot|Deshabilitado|
     |Tamaño del nodo|**Standard B4s_v2**|
     |Método de escala|**Manual**|
     |Recuento de nodos|**2**|
     |Máximo de pods por nodo|**30**|
-    |Habilitar IP pública por nodo|Disabled|
+    |Habilitar IP pública por nodo|Deshabilitado|
 
    > **Nota:** es posible que tenga que aumentar las cuotas de vCPU o cambiar la SKU de la máquina virtual para dar cabida a los valores de tamaño de nodo y número de nodos. Para obtener información sobre el procedimiento para aumentar las cuotas de vCPU, consulte el artículo de Microsoft Learn [Aumentar las cuotas de vCPU de una familia de máquinas virtuales](https://learn.microsoft.com/en-us/azure/quotas/per-vm-quota-requests).
 
@@ -263,8 +263,8 @@ En esta tarea crea dos espacios de nombres en el clúster de AKS que creó anter
 1. En la página **aks-01 \| Espacios de nombres**, seleccione **+ Crear** y, en el menú desplegable, seleccione **Espacio de nombres**.
 1. En el panel **Crear un espacio de nombres**, en el cuadro de texto **Nombre**, escriba **dev-dotnet** y seleccione **Crear**.
 
-### Tarea 2: crear un manifiesto de Kubernetes para implementar la imagen de Linux
-En esta tarea crea un manifiesto de Kubernetes para implementar la imagen de Linux en el grupo de nodos de Linux
+### Tarea 2: Crear un manifiesto de Kubernetes para implementar la imagen de Linux
+En esta tarea crea un manifiesto de Kubernetes para implementar la imagen de Linux en el grupo de nodos de Linux.
 
 1. En Azure Portal, seleccione el icono de **Cloud Shell**.
 1. Asegúrese de que aparece **Bash** en el menú desplegable de la esquina superior izquierda del panel de Cloud Shell.
@@ -321,7 +321,7 @@ En esta tarea crea un manifiesto de Kubernetes para implementar la imagen de Lin
        app: hellofromnode
    ```
 
-   > **Nota:** la implementación creará pods basados en la imagen de contenedor de Linux en el grupo de nodos de Linux en el clúster de AKS. Además, el manifiesto incluye un servicio que proporcionará acceso con equilibrio de carga a los pods de la implementación a través de una dirección IP pública en el puerto 80.
+   > **Nota:** La implementación creará pods basados en la imagen de contenedor de Linux en el grupo de nodos de Linux en el clúster de AKS. Además, el manifiesto incluye un servicio que proporcionará acceso con equilibrio de carga a los pods de la implementación a través de una dirección IP pública en el puerto 80.
 
 1. Guarde los cambios del archivo y ciérrelo para volver al símbolo del sistema de Bash.
 1. En la sesión de Bash de Azure Cloud Shell, reemplace el marcador de posición **ACR_NAME** en el archivo aks-deployment-l01.yaml ejecutando los siguientes comandos:
@@ -332,8 +332,8 @@ En esta tarea crea un manifiesto de Kubernetes para implementar la imagen de Lin
    sed -i "s/ACR_NAME/$ACR_NAME/" ./aks-deployment-l01.yaml
    ```
 
-### Tarea 3: crear un manifiesto de Kubernetes para implementar la imagen de Windows
-En esta tarea, creará un manifiesto de Kubernetes para implementar la imagen de Windows en el grupo de nodos de Windows
+### Tarea 3: Crear un manifiesto de Kubernetes para implementar la imagen de Windows
+En esta tarea, creará un manifiesto de Kubernetes para implementar la imagen de Windows en el grupo de nodos de Windows.
 
 1. En la sesión de Bash de Azure Cloud Shell, cree un directorio para hospedar el manifiesto de implementación para aprovisionar pods basados en la imagen de Windows. Cambie a ese directorio desde el directorio actual ejecutando los siguientes comandos:
 
@@ -388,7 +388,7 @@ En esta tarea, creará un manifiesto de Kubernetes para implementar la imagen de
        app: hellofromdotnet
    ```
 
-   > **Nota:** la implementación creará pods basados en la imagen de contenedor de Windows en el grupo de nodos de Windows en el clúster de AKS. Además, el manifiesto incluye un servicio que proporcionará acceso con equilibrio de carga a los pods de la implementación a través de una dirección IP pública en el puerto 80.
+   > **Nota:** La implementación creará pods basados en la imagen de contenedor de Windows en el grupo de nodos de Windows en el clúster de AKS. Además, el manifiesto incluye un servicio que proporcionará acceso con equilibrio de carga a los pods de la implementación a través de una dirección IP pública en el puerto 80.
 
 1. Guarde los cambios del archivo y ciérrelo para volver al símbolo del sistema de Bash.
 1. En la sesión de Bash de Azure Cloud Shell, reemplace el marcador de posición **ACR_NAME** en el archivo aks-deployment-l01.yaml ejecutando el siguiente comando:
@@ -397,7 +397,7 @@ En esta tarea, creará un manifiesto de Kubernetes para implementar la imagen de
    sed -i "s/ACR_NAME/$ACR_NAME/" ./aks-deployment-w01.yaml
    ```
 
-### Tarea 4: realizar implementaciones de AKS usando archivos de manifiesto de YAML
+### Tarea 4: Realizar implementaciones de AKS usando archivos de manifiesto de YAML
 En esta tarea implementa imágenes de contenedor en sus respectivos espacios de nombres y grupos de nodos en el clúster de AKS de destino.
 
 1. En la sesión de Bash de Azure Cloud Shell, conéctese al clúster de AKS ejecutando los siguientes comandos:
@@ -414,7 +414,7 @@ En esta tarea implementa imágenes de contenedor en sus respectivos espacios de 
    kubectl get nodes
    ```
 
-   > **Nota:** la salida del comando debe incluir la lista de todos los nodos de AKS (cuatro en este caso).
+   > **Nota:** La salida del comando debe incluir la lista de todos los nodos de AKS (cuatro en este caso).
 
 1. En la sesión de Bash de Azure Cloud Shell, cree la primera implementación definida en el archivo de manifiesto YAML correspondiente en el espacio de nombres **dev-node** ejecutando los siguientes comandos:
 
@@ -423,7 +423,7 @@ En esta tarea implementa imágenes de contenedor en sus respectivos espacios de 
    kubectl apply -f aks-deployment-l01.yaml -n=dev-node
    ```
 
-   > **Nota:** continúe con el paso siguiente sin esperar a que se complete la implementación. El aprovisionamiento de todos los recursos puede tardar unos minutos.
+   > **Nota:** Continúe con el paso siguiente sin esperar a que se complete la implementación. El aprovisionamiento de todos los recursos puede tardar unos minutos.
 
 1. En la sesión de Bash de Azure Cloud Shell, cree la segunda implementación definida en el archivo de manifiesto YAML correspondiente ejecutando el siguiente comando:
 
@@ -432,7 +432,7 @@ En esta tarea implementa imágenes de contenedor en sus respectivos espacios de 
    kubectl apply -f aks-deployment-w01.yaml -n=dev-dotnet
    ```
 
-   > **Nota:** continúe con el paso siguiente sin esperar a que se complete la implementación. El aprovisionamiento de todos los recursos puede tardar unos minutos.
+   > **Nota:** Continúe con el paso siguiente sin esperar a que se complete la implementación. El aprovisionamiento de todos los recursos puede tardar unos minutos.
 
 # Ejercicio 4: revisar la implementación y desaprovisionar todos los recursos
 En este ejercicio, revisará los resultados de las implementaciones y desaprovisionará todos los recursos.
@@ -447,7 +447,7 @@ En esta tarea, revisará los resultados de ambas implementaciones, incluidos los
    kubectl get deployments -n=dev-dotnet
    ```
 
-   > **Nota:** antes de continuar con el paso siguiente, compruebe que ambas implementaciones se muestran con el estado listo. Si no es así, espere otro minuto, vuelva a ejecutar los dos comandos mencionados anteriormente y vuelva a comprobar el estado de la implementación.
+   > **Nota:** Antes de continuar con el paso siguiente, compruebe que ambas implementaciones se muestran con el estado listo. Si no es así, espere otro minuto, vuelva a ejecutar los dos comandos mencionados anteriormente y vuelva a comprobar el estado de la implementación.
 
 1. En la sesión de Bash de Azure Cloud Shell, muestre el estado de los dos servicios que se incluyeron en los archivos de manifiesto mediante la ejecución de los siguientes comandos:
 
@@ -478,6 +478,6 @@ En esta tarea, eliminará todos los recursos aprovisionados en este ejercicio.
    az group delete --name 'aks-01-RG' --no-wait --yes
    ```
 
-   > **Nota:** el comando se ejecuta de forma asíncrona (tal y como impone el parámetro --nowait), por lo que aunque ambos comandos vuelvan inmediatamente a la línea de comandos de Bash, pasarán unos minutos antes de que se eliminen los grupos de recursos y sus recursos.
+   > **Nota:** El comando se ejecuta de forma asíncrona (tal y como impone el parámetro --nowait), por lo que, aunque ambos comandos vuelvan inmediatamente a la línea de comandos de Bash, pasarán unos minutos antes de que se eliminen los grupos de recursos y sus recursos.
 
 1. Cierre el panel de Azure Cloud Shell.
