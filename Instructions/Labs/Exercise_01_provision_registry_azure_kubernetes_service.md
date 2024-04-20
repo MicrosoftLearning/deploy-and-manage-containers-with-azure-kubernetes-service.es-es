@@ -36,9 +36,9 @@ En esta tarea, creará una instancia de Azure Container Registry
    |Subscription|Nombre de la suscripción de Azure que usará en este laboratorio|
    |Grupo de recursos|Nombre de un nuevo grupo de recursos **acr-01-RG**|
    |Nombre de registro|Cualquier nombre válido y único a nivel global que conste de entre 5 y 50 caracteres alfanuméricos|
-   |Region|Cualquier región de Azure en la que pueda crear una instancia de Azure Container Registry y un clúster de AKS|
-   |Zonas de disponibilidad|**Ninguno**|
-   |SKU|**Basic**|
+   |Location|Cualquier región de Azure en la que pueda crear una instancia de Azure Container Registry y un clúster de AKS|
+   |Uso de zonas de disponibilidad|Deshabilitado|
+   |Plan de precios|**Basic**|
 
 1. En la página **Registros de contenedor**, seleccione **Revisar y crear** y, en la pestaña **Revisar y crear**, seleccione **Crear**.
 
@@ -86,7 +86,7 @@ En esta tarea, creará una red virtual de Azure e implementará en ella un clús
 
    - En la sección **Grupos de nodo**, seleccione el vínculo **agentpool**.
    - En la página **Actualizar grupo de nodo**, en la sección **Tamaño del nodo**, seleccione el vínculo **Elegir el tamaño**.
-   - En la página **Seleccionar el tamaño de máquina virtual**, en la lista de tamaños de máquina virtual, seleccione **B4ms** y haga clic en **Seleccionar**.
+   - En la página **Seleccionar el tamaño de máquina virtual**, en la lista de tamaños de máquina virtual, seleccione **D2s_v3** y haga clic en **Seleccionar**.
    - De nuevo en la página **Actualizar grupo de nodo**, establezca el **Método de escala** en **Manual** y el **Recuento de nodos** en **2**.
    - En la página **Actualizar grupo de nodo**, seleccione **Actualizar**.
 
@@ -95,7 +95,7 @@ En esta tarea, creará una red virtual de Azure e implementará en ella un clús
    > **Nota:** agregará un grupo de nodos de Windows al clúster. Esto requiere cambiar la configuración de red a **Azure CNI** del **kubenet** predeterminado. La configuración de red de kubenet no admite grupos de nodos de Windows.
 
 1. De nuevo en la pestaña **Grupos de nodo** de la página **Crear clúster de Kubernetes**, seleccione **Siguiente**.
-1. En la pestaña **Redes** de la página **Crear clúster de Kubernetes**, seleccione la opción **Azure CNI** y, a continuación, seleccione la casilla **Traiga su propia red virtual**. Luego, en la lista desplegable **Red virtual**, seleccione **vnet-01** y, debajo del cuadro de texto **Subred de clúster**, seleccione **Configuración de subred administrada**.
+1. En la pestaña **Redes** de la página **Crear clúster de Kubernetes**, asegúrese de que la opción **Azure CNI** esté seleccionada y, a continuación, elija la casilla **Traiga su propia red virtual**. Después, en la lista desplegable **Red virtual**, seleccione **vnet-01** y, debajo del cuadro de texto **Subred de clúster**, seleccione **Configuración de subred administrada**.
 1. En la página **vnet-01 \| Subredes**, seleccione **+ Subred**.
 1. En la página **Agregar subredes**, especifique la siguiente configuración y seleccione **Guardar**:
 
@@ -127,7 +127,7 @@ En esta tarea, creará una red virtual de Azure e implementará en ella un clús
    |Tipo de SO|**Windows 2022**|
    |Zona de disponibilidad|**Ninguno**|
    |Habilitar instancias de Azure Spot|Deshabilitado|
-   |Tamaño del nodo|**B4ms**|
+   |Tamaño del nodo|**D2s_v3**|
    |Método de escala|**Manual**|
    |Recuento de nodos|**2**|
    |Máximo de pods por nodo|**30**|
@@ -138,8 +138,8 @@ En esta tarea, creará una red virtual de Azure e implementará en ella un clús
 1. En la página **Agregar grupo de nodos**, seleccione **Agregar**.
 1. De nuevo en la pestaña **Grupos de nodo** de la página **Crear clúster de Kubernetes**, seleccione **Siguiente**.
 1. En la pestaña **Redes** de la página **Crear clúster de Kubernetes**, seleccione **Siguiente**.
-1. En la pestaña **Integración** de la página **Crear clúster de Kubernetes**, en la lista desplegable **Registro de contenedor**, seleccione la entrada que representa la instancia de Azure Container Registry que creó en el ejercicio anterior, deshabilite la casilla **Habilitar reglas de alerta recomendadas**, asegúrese de que la opción **Azure Policy** esté deshabilitada y seleccione **Siguiente**.
-1. En la pestaña **Supervisión** de la página **Crear clúster de Kubernetes**, desactive la casilla **Habilitar métricas de Prometheus** y, a continuación, seleccione **Revisar y crear**.
+1. En la pestaña **Integración** de la página **Crear clúster de Kubernetes**, en la lista desplegable **Registro de contenedor**, seleccione la entrada que representa la instancia de Azure Container Registry que creó en el ejercicio anterior, asegúrese de que la opción **Azure Policy** esté deshabilitada y seleccione **Siguiente**.
+1. En la pestaña **Supervisión** de la página **Crear clúster de Kubernetes**, desactive la casilla **Habilitar métricas de Prometheus**, desactive la casilla **Habilitar reglas de alerta recomendadas** y, a continuación, seleccione **Revisar y crear**.
 1. En la pestaña **Revisar y crear** de la página **Crear clúster de Kubernetes**, seleccione **Crear**.
 
    > **Nota:** continúe con el ejercicio siguiente sin esperar a que se complete el aprovisionamiento del clúster de AKS. El proceso de aprovisionamiento puede tardar unos cinco minutos.
